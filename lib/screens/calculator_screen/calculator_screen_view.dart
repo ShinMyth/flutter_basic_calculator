@@ -1,3 +1,4 @@
+import 'package:basiccalculator/configurables/app_outlined_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -44,51 +45,18 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "AC",
-                    style: TextStyle(fontSize: 18.5.sp),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton03(
+                onPressed: () {},
+                buttonLabel: "AC",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "C",
-                    style: TextStyle(fontSize: 18.5.sp),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton03(
+                onPressed: () {},
+                buttonLabel: "C",
               ),
               SizedBox(width: 17.w),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "÷",
-                    style: TextStyle(fontSize: 21.sp),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton02(
+                onPressed: () {},
+                buttonLabel: "÷",
               ),
             ],
           ),
@@ -96,74 +64,21 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "7",
-                    style: TextStyle(
-                      fontSize: 18.5.sp,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton01(
+                onPressed: () {},
+                buttonLabel: "7",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "8",
-                    style: TextStyle(
-                      fontSize: 18.5.sp,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton01(
+                onPressed: () {},
+                buttonLabel: "8",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "9",
-                    style: TextStyle(
-                      fontSize: 18.5.sp,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton01(
+                onPressed: () {},
+                buttonLabel: "9",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "×",
-                    style: TextStyle(fontSize: 21.sp),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton02(
+                onPressed: () {},
+                buttonLabel: "×",
               ),
             ],
           ),
@@ -171,74 +86,21 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "4",
-                    style: TextStyle(
-                      fontSize: 18.5.sp,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton01(
+                onPressed: () {},
+                buttonLabel: "4",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "5",
-                    style: TextStyle(
-                      fontSize: 18.5.sp,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton01(
+                onPressed: () {},
+                buttonLabel: "5",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "6",
-                    style: TextStyle(
-                      fontSize: 18.5.sp,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton01(
+                onPressed: () {},
+                buttonLabel: "6",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "−",
-                    style: TextStyle(fontSize: 21.sp),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton02(
+                onPressed: () {},
+                buttonLabel: "−",
               ),
             ],
           ),
@@ -246,74 +108,21 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "1",
-                    style: TextStyle(
-                      fontSize: 18.5.sp,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton01(
+                onPressed: () {},
+                buttonLabel: "1",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "2",
-                    style: TextStyle(
-                      fontSize: 18.5.sp,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton01(
+                onPressed: () {},
+                buttonLabel: "2",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "3",
-                    style: TextStyle(
-                      fontSize: 18.5.sp,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton01(
+                onPressed: () {},
+                buttonLabel: "3",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "+",
-                    style: TextStyle(fontSize: 21.sp),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton02(
+                onPressed: () {},
+                buttonLabel: "+",
               ),
             ],
           ),
@@ -322,41 +131,13 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SizedBox(width: 17.w),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    "0",
-                    style: TextStyle(
-                      fontSize: 18.5.sp,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton01(
+                onPressed: () {},
+                buttonLabel: "0",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    side: const BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text(
-                    ".",
-                    style: TextStyle(
-                      fontSize: 18.5.sp,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
-                  ),
-                ),
+              AppOutlinedButtons.outlinedButton01(
+                onPressed: () {},
+                buttonLabel: ".",
               ),
               SizedBox(
                 height: 17.w,
