@@ -1,6 +1,6 @@
 {
-    "name": "flutter_basic_calculator",
-    "short_name": "flutter_basic_calculator",
+    "name": "basiccalculator",
+    "short_name": "basiccalculator",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

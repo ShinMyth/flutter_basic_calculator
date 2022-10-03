@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.kac.basiccalculator" "\0"
-            VALUE "FileDescription", "flutter_basic_calculator" "\0"
+            VALUE "CompanyName", "com.kac" "\0"
+            VALUE "FileDescription", "basiccalculator" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "flutter_basic_calculator" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.kac.basiccalculator. All rights reserved." "\0"
-            VALUE "OriginalFilename", "flutter_basic_calculator.exe" "\0"
-            VALUE "ProductName", "flutter_basic_calculator" "\0"
+            VALUE "InternalName", "basiccalculator" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 com.kac. All rights reserved." "\0"
+            VALUE "OriginalFilename", "basiccalculator.exe" "\0"
+            VALUE "ProductName", "basiccalculator" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

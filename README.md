@@ -1,4 +1,4 @@
-# flutter_basic_calculator
+# basiccalculator
 
 A new Flutter project.
 

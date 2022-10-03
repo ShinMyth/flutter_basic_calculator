@@ -1,4 +1,4 @@
-package com.kac.basiccalculator.flutter_basic_calculator
+package com.kac.basiccalculator
 
 import io.flutter.embedding.android.FlutterActivity
 
