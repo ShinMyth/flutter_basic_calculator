@@ -38,6 +38,9 @@ dependencies:
   # Responsive sizer for UI
   responsive_sizer: ^3.1.1
 
+  # Parsing and evaluating mathematical expressions.
+  math_expressions: ^2.3.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

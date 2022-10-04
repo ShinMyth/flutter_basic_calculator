@@ -1,5 +1,6 @@
 import 'package:basiccalculator/configurables/app_outlined_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CalculatorScreenView extends StatefulWidget {
@@ -10,6 +11,106 @@ class CalculatorScreenView extends StatefulWidget {
 }
 
 class _CalculatorScreenViewState extends State<CalculatorScreenView> {
+  String initialValue = "0";
+  String inputedValue = "";
+  String calculatedValue = "";
+
+  removeAll() {
+    setState(() {
+      inputedValue = "";
+      calculatedValue = "";
+    });
+  }
+
+  removeLastChar() {
+    setState(() {
+      if (calculatedValue.isNotEmpty) {
+        calculatedValue = "";
+      }
+
+      if (inputedValue.isNotEmpty) {
+        if (inputedValue.substring(inputedValue.length - 1) == " ") {
+          inputedValue = inputedValue.substring(0, inputedValue.length - 3);
+        } else {
+          inputedValue = inputedValue.substring(0, inputedValue.length - 1);
+        }
+      }
+    });
+  }
+
+  inputNumberOrDecimalPoint({required String input}) {
+    setState(() {
+      if (inputedValue.isEmpty && input == ".") {
+        inputedValue += "0";
+      }
+
+      if (calculatedValue.isNotEmpty) {
+        // Set the previous calculated value as input
+        inputedValue = calculatedValue;
+
+        // Clear the calculated value variable
+        calculatedValue = "";
+      }
+
+      inputedValue += input;
+    });
+  }
+
+  inputArithmeticOperator({required String input}) {
+    setState(() {
+      if (calculatedValue.isNotEmpty) {
+        // Set the previous calculated value as input
+        inputedValue = calculatedValue;
+
+        // Clear the calculated value variable
+        calculatedValue = "";
+      }
+
+      if (inputedValue.isNotEmpty) {
+        if (inputedValue.substring(inputedValue.length - 1) == " " ||
+            inputedValue.substring(inputedValue.length - 1) == "-") {
+          return;
+        } else {
+          inputedValue += input;
+        }
+      } else {
+        if (input == " - ") {
+          inputedValue += "-";
+        }
+      }
+    });
+  }
+
+  calculateInput() {
+    setState(() {
+      if (inputedValue.isNotEmpty) {
+        if (inputedValue.substring(inputedValue.length - 1) == " ") {
+          inputedValue = inputedValue.substring(0, inputedValue.length - 3);
+        }
+
+        inputedValue = inputedValue.replaceAll('×', '*');
+        inputedValue = inputedValue.replaceAll('÷', '/');
+
+        String finalInputedValue = inputedValue;
+
+        Parser p = Parser();
+        Expression exp = p.parse(finalInputedValue);
+        ContextModel cm = ContextModel();
+        double eval = exp.evaluate(EvaluationType.REAL, cm);
+
+        if (eval % 1 == 0) {
+          int newEval = eval.toInt();
+          calculatedValue = newEval.toString();
+        } else {
+          calculatedValue = eval.toString();
+        }
+
+        inputedValue = inputedValue.replaceAll('*', '×');
+        inputedValue = inputedValue.replaceAll('/', '÷');
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,15 +126,32 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
             height: 17.h,
             width: 100.w,
             padding: EdgeInsets.symmetric(horizontal: 5.w),
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                "100",
-                style: TextStyle(
-                  fontSize: 23.sp,
-                  color: Colors.black.withOpacity(0.7),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                if (calculatedValue.isNotEmpty) ...[
+                  Text(
+                    inputedValue,
+                    style: TextStyle(
+                      fontSize: 23.sp,
+                      color: Colors.black.withOpacity(0.7),
+                    ),
+                  ),
+                  SizedBox(height: 1.h),
+                ],
+                Text(
+                  calculatedValue.isNotEmpty
+                      ? calculatedValue
+                      : inputedValue.isEmpty
+                          ? initialValue
+                          : inputedValue,
+                  style: TextStyle(
+                    fontSize: 23.sp,
+                    color: Colors.black.withOpacity(0.7),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
           SizedBox(height: 1.5.h),
@@ -46,16 +164,22 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               AppOutlinedButtons.outlinedButton03(
-                onPressed: () {},
+                onPressed: () {
+                  removeAll();
+                },
                 buttonLabel: "AC",
               ),
               AppOutlinedButtons.outlinedButton03(
-                onPressed: () {},
+                onPressed: () {
+                  removeLastChar();
+                },
                 buttonLabel: "C",
               ),
               SizedBox(width: 17.w),
               AppOutlinedButtons.outlinedButton02(
-                onPressed: () {},
+                onPressed: () {
+                  inputArithmeticOperator(input: " ÷ ");
+                },
                 buttonLabel: "÷",
               ),
             ],
@@ -65,19 +189,27 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               AppOutlinedButtons.outlinedButton01(
-                onPressed: () {},
+                onPressed: () {
+                  inputNumberOrDecimalPoint(input: "7");
+                },
                 buttonLabel: "7",
               ),
               AppOutlinedButtons.outlinedButton01(
-                onPressed: () {},
+                onPressed: () {
+                  inputNumberOrDecimalPoint(input: "8");
+                },
                 buttonLabel: "8",
               ),
               AppOutlinedButtons.outlinedButton01(
-                onPressed: () {},
+                onPressed: () {
+                  inputNumberOrDecimalPoint(input: "9");
+                },
                 buttonLabel: "9",
               ),
               AppOutlinedButtons.outlinedButton02(
-                onPressed: () {},
+                onPressed: () {
+                  inputArithmeticOperator(input: " × ");
+                },
                 buttonLabel: "×",
               ),
             ],
@@ -87,20 +219,28 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               AppOutlinedButtons.outlinedButton01(
-                onPressed: () {},
+                onPressed: () {
+                  inputNumberOrDecimalPoint(input: "4");
+                },
                 buttonLabel: "4",
               ),
               AppOutlinedButtons.outlinedButton01(
-                onPressed: () {},
+                onPressed: () {
+                  inputNumberOrDecimalPoint(input: "5");
+                },
                 buttonLabel: "5",
               ),
               AppOutlinedButtons.outlinedButton01(
-                onPressed: () {},
+                onPressed: () {
+                  inputNumberOrDecimalPoint(input: "6");
+                },
                 buttonLabel: "6",
               ),
               AppOutlinedButtons.outlinedButton02(
-                onPressed: () {},
-                buttonLabel: "−",
+                onPressed: () {
+                  inputArithmeticOperator(input: " - ");
+                },
+                buttonLabel: "-",
               ),
             ],
           ),
@@ -109,19 +249,27 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               AppOutlinedButtons.outlinedButton01(
-                onPressed: () {},
+                onPressed: () {
+                  inputNumberOrDecimalPoint(input: "1");
+                },
                 buttonLabel: "1",
               ),
               AppOutlinedButtons.outlinedButton01(
-                onPressed: () {},
+                onPressed: () {
+                  inputNumberOrDecimalPoint(input: "2");
+                },
                 buttonLabel: "2",
               ),
               AppOutlinedButtons.outlinedButton01(
-                onPressed: () {},
+                onPressed: () {
+                  inputNumberOrDecimalPoint(input: "3");
+                },
                 buttonLabel: "3",
               ),
               AppOutlinedButtons.outlinedButton02(
-                onPressed: () {},
+                onPressed: () {
+                  inputArithmeticOperator(input: " + ");
+                },
                 buttonLabel: "+",
               ),
             ],
@@ -132,18 +280,24 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
             children: [
               SizedBox(width: 17.w),
               AppOutlinedButtons.outlinedButton01(
-                onPressed: () {},
+                onPressed: () {
+                  inputNumberOrDecimalPoint(input: "0");
+                },
                 buttonLabel: "0",
               ),
               AppOutlinedButtons.outlinedButton01(
-                onPressed: () {},
+                onPressed: () {
+                  inputNumberOrDecimalPoint(input: ".");
+                },
                 buttonLabel: ".",
               ),
               SizedBox(
                 height: 17.w,
                 width: 17.w,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    calculateInput();
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: const CircleBorder(),
                   ),
