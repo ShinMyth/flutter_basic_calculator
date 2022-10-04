@@ -15,20 +15,21 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
   String inputedValue = "";
   String calculatedValue = "";
 
-  removeAll() {
+  allClear() {
     setState(() {
       inputedValue = "";
       calculatedValue = "";
     });
   }
 
-  removeLastChar() {
+  clear() {
     setState(() {
       if (calculatedValue.isNotEmpty) {
         calculatedValue = "";
       }
 
       if (inputedValue.isNotEmpty) {
+        // Checks if the last input value is an arithmetic operator
         if (inputedValue.substring(inputedValue.length - 1) == " ") {
           inputedValue = inputedValue.substring(0, inputedValue.length - 3);
         } else {
@@ -40,13 +41,13 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
 
   inputNumberOrDecimalPoint({required String input}) {
     setState(() {
-      if (inputedValue.isEmpty && input == ".") {
-        inputedValue += "0";
-      }
-
       if (calculatedValue.isNotEmpty) {
-        // Set the previous calculated value as input
-        inputedValue = calculatedValue;
+        // Set the previous calculated value as input if not 0
+        if (calculatedValue != "0") {
+          inputedValue = calculatedValue;
+        } else {
+          inputedValue = "";
+        }
 
         // Clear the calculated value variable
         calculatedValue = "";
@@ -67,13 +68,13 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
       }
 
       if (inputedValue.isNotEmpty) {
-        if (inputedValue.substring(inputedValue.length - 1) == " " ||
-            inputedValue.substring(inputedValue.length - 1) == "-") {
-          return;
-        } else {
+        // Checks if the last input value is neither an arithmetic operator and negative symbol
+        if (inputedValue.substring(inputedValue.length - 1) != " " &&
+            inputedValue.substring(inputedValue.length - 1) != "-") {
           inputedValue += input;
         }
       } else {
+        // Checks if the input value negative
         if (input == " - ") {
           inputedValue += "-";
         }
@@ -84,6 +85,13 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
   calculateInput() {
     setState(() {
       if (inputedValue.isNotEmpty) {
+        // Check if the inputed value is a negative symbol only
+        if (inputedValue == "-") {
+          inputedValue = "";
+          return;
+        }
+
+        // Checks if the last input value is an arithmetic operator
         if (inputedValue.substring(inputedValue.length - 1) == " ") {
           inputedValue = inputedValue.substring(0, inputedValue.length - 3);
         }
@@ -98,6 +106,7 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
         ContextModel cm = ContextModel();
         double eval = exp.evaluate(EvaluationType.REAL, cm);
 
+        // Checks if eval is a whole number
         if (eval % 1 == 0) {
           int newEval = eval.toInt();
           calculatedValue = newEval.toString();
@@ -119,11 +128,10 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
         centerTitle: true,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            height: 17.h,
             width: 100.w,
             padding: EdgeInsets.symmetric(horizontal: 5.w),
             child: Column(
@@ -143,9 +151,9 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
                 Text(
                   calculatedValue.isNotEmpty
                       ? calculatedValue
-                      : inputedValue.isEmpty
-                          ? initialValue
-                          : inputedValue,
+                      : inputedValue.isNotEmpty
+                          ? inputedValue
+                          : initialValue,
                   style: TextStyle(
                     fontSize: 23.sp,
                     color: Colors.black.withOpacity(0.7),
@@ -165,13 +173,13 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
             children: [
               AppOutlinedButtons.outlinedButton03(
                 onPressed: () {
-                  removeAll();
+                  allClear();
                 },
                 buttonLabel: "AC",
               ),
               AppOutlinedButtons.outlinedButton03(
                 onPressed: () {
-                  removeLastChar();
+                  clear();
                 },
                 buttonLabel: "C",
               ),
@@ -309,6 +317,7 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
               ),
             ],
           ),
+          SizedBox(height: 8.h),
         ],
       ),
     );

@@ -45,7 +45,7 @@ class AppOutlinedButtons {
     );
   }
 
-  // Functions
+  // Clear and All Clear
   static outlinedButton03({
     required void Function() onPressed,
     required String buttonLabel,
