@@ -53,6 +53,48 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
         calculatedValue = "";
       }
 
+      if (inputedValue.isEmpty && input == "0") {
+        return;
+      } else if (inputedValue.isNotEmpty && input == "0") {
+        List<String> listString = inputedValue.split(" ");
+        // Checks if the last number equals to 0
+        if (listString[listString.length - 1] == "0") {
+          return;
+        }
+      }
+
+      if (inputedValue.isEmpty && input == ".") {
+        inputedValue += "0.";
+        return;
+      } else if (inputedValue.isNotEmpty && input == ".") {
+        // Checks if the last input value is a decimal point
+        if (inputedValue.substring(inputedValue.length - 1) == ".") {
+          return;
+        } else {
+          List<String> listString = inputedValue.split(" ");
+          // Checks if the last number has a decimal point already
+          if (listString[listString.length - 1].contains(".")) {
+            return;
+          } else {
+            // Checks if the last number equals to blank or empty
+            if (listString[listString.length - 1] == "") {
+              inputedValue += "0.";
+            } else {
+              inputedValue += ".";
+            }
+            return;
+          }
+        }
+      }
+
+      if (input != "0" && input != ".") {
+        List<String> listString = inputedValue.split(" ");
+        // Checks if the last number equals to 0
+        if (listString[listString.length - 1] == "0") {
+          inputedValue = inputedValue.substring(0, inputedValue.length - 1);
+        }
+      }
+
       inputedValue += input;
     });
   }
@@ -68,9 +110,10 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
       }
 
       if (inputedValue.isNotEmpty) {
-        // Checks if the last input value is neither an arithmetic operator and negative symbol
+        // Checks if the last input value is neither an arithmetic operator, negative symbol and a decimal point
         if (inputedValue.substring(inputedValue.length - 1) != " " &&
-            inputedValue.substring(inputedValue.length - 1) != "-") {
+            inputedValue.substring(inputedValue.length - 1) != "-" &&
+            inputedValue.substring(inputedValue.length - 1) != ".") {
           inputedValue += input;
         }
       } else {
@@ -141,6 +184,7 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
                 if (calculatedValue.isNotEmpty) ...[
                   Text(
                     inputedValue,
+                    textAlign: TextAlign.right,
                     style: TextStyle(
                       fontSize: 23.sp,
                       color: Colors.black.withOpacity(0.7),
@@ -154,6 +198,7 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
                       : inputedValue.isNotEmpty
                           ? inputedValue
                           : initialValue,
+                  textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: 23.sp,
                     color: Colors.black.withOpacity(0.7),
