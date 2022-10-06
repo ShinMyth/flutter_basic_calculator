@@ -2,6 +2,7 @@ import 'package:basiccalculator/configurables/app_outlined_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class CalculatorScreenView extends StatefulWidget {
   const CalculatorScreenView({Key? key}) : super(key: key);
@@ -42,14 +43,13 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
   inputNumberOrDecimalPoint({required String input}) {
     setState(() {
       if (calculatedValue.isNotEmpty) {
-        // Set the previous calculated value as input if not 0
+        // Checks if the previous calculated value is not 0
         if (calculatedValue != "0") {
           inputedValue = calculatedValue;
         } else {
           inputedValue = "";
         }
 
-        // Clear the calculated value variable
         calculatedValue = "";
       }
 
@@ -102,10 +102,8 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
   inputArithmeticOperator({required String input}) {
     setState(() {
       if (calculatedValue.isNotEmpty) {
-        // Set the previous calculated value as input
         inputedValue = calculatedValue;
 
-        // Clear the calculated value variable
         calculatedValue = "";
       }
 
@@ -182,17 +180,18 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 if (calculatedValue.isNotEmpty) ...[
-                  Text(
+                  AutoSizeText(
                     inputedValue,
                     textAlign: TextAlign.right,
                     style: TextStyle(
                       fontSize: 23.sp,
                       color: Colors.black.withOpacity(0.7),
                     ),
+                    maxLines: 4,
                   ),
                   SizedBox(height: 1.h),
                 ],
-                Text(
+                AutoSizeText(
                   calculatedValue.isNotEmpty
                       ? calculatedValue
                       : inputedValue.isNotEmpty
@@ -201,8 +200,11 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: 23.sp,
-                    color: Colors.black.withOpacity(0.7),
+                    color: calculatedValue.isNotEmpty
+                        ? Colors.blueAccent
+                        : Colors.black.withOpacity(0.7),
                   ),
+                  maxLines: 5,
                 ),
               ],
             ),
