@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class AppOutlinedButtons {
-  // Numbers and Decimal Point
-  static outlinedButton01({
-    required void Function() onPressed,
-    required String buttonLabel,
-  }) {
+class NumberDecimalOutlinedButton extends StatelessWidget {
+  const NumberDecimalOutlinedButton({
+    Key? key,
+    required this.onPressed,
+    required this.buttonLabel,
+  }) : super(key: key);
+
+  final void Function() onPressed;
+  final String buttonLabel;
+
+  @override
+  Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
@@ -24,12 +30,20 @@ class AppOutlinedButtons {
       ),
     );
   }
+}
 
-  // Arithmetic Operators
-  static outlinedButton02({
-    required void Function() onPressed,
-    required String buttonLabel,
-  }) {
+class ArithmeticOperatorOutlinedButton extends StatelessWidget {
+  const ArithmeticOperatorOutlinedButton({
+    Key? key,
+    required this.onPressed,
+    required this.buttonLabel,
+  }) : super(key: key);
+
+  final void Function() onPressed;
+  final String buttonLabel;
+
+  @override
+  Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
@@ -44,12 +58,20 @@ class AppOutlinedButtons {
       ),
     );
   }
+}
 
-  // Clear and All Clear
-  static outlinedButton03({
-    required void Function() onPressed,
-    required String buttonLabel,
-  }) {
+class FunctionOutlinedButton extends StatelessWidget {
+  const FunctionOutlinedButton({
+    Key? key,
+    required this.onPressed,
+    required this.buttonLabel,
+  }) : super(key: key);
+
+  final void Function() onPressed;
+  final String buttonLabel;
+
+  @override
+  Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
