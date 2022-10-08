@@ -1,4 +1,4 @@
-import 'package:basiccalculator/configurables/app_outlined_buttons.dart';
+import 'package:basiccalculator/widgets/custom_outlined_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -218,20 +218,20 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              AppOutlinedButtons.outlinedButton03(
+              FunctionOutlinedButton(
                 onPressed: () {
                   allClear();
                 },
                 buttonLabel: "AC",
               ),
-              AppOutlinedButtons.outlinedButton03(
+              FunctionOutlinedButton(
                 onPressed: () {
                   clear();
                 },
                 buttonLabel: "C",
               ),
               SizedBox(width: 17.w),
-              AppOutlinedButtons.outlinedButton02(
+              ArithmeticOperatorOutlinedButton(
                 onPressed: () {
                   inputArithmeticOperator(input: " ÷ ");
                 },
@@ -243,25 +243,25 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              AppOutlinedButtons.outlinedButton01(
+              NumberDecimalOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "7");
                 },
                 buttonLabel: "7",
               ),
-              AppOutlinedButtons.outlinedButton01(
+              NumberDecimalOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "8");
                 },
                 buttonLabel: "8",
               ),
-              AppOutlinedButtons.outlinedButton01(
+              NumberDecimalOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "9");
                 },
                 buttonLabel: "9",
               ),
-              AppOutlinedButtons.outlinedButton02(
+              ArithmeticOperatorOutlinedButton(
                 onPressed: () {
                   inputArithmeticOperator(input: " × ");
                 },
@@ -273,25 +273,25 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              AppOutlinedButtons.outlinedButton01(
+              NumberDecimalOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "4");
                 },
                 buttonLabel: "4",
               ),
-              AppOutlinedButtons.outlinedButton01(
+              NumberDecimalOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "5");
                 },
                 buttonLabel: "5",
               ),
-              AppOutlinedButtons.outlinedButton01(
+              NumberDecimalOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "6");
                 },
                 buttonLabel: "6",
               ),
-              AppOutlinedButtons.outlinedButton02(
+              ArithmeticOperatorOutlinedButton(
                 onPressed: () {
                   inputArithmeticOperator(input: " - ");
                 },
@@ -303,25 +303,25 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              AppOutlinedButtons.outlinedButton01(
+              NumberDecimalOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "1");
                 },
                 buttonLabel: "1",
               ),
-              AppOutlinedButtons.outlinedButton01(
+              NumberDecimalOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "2");
                 },
                 buttonLabel: "2",
               ),
-              AppOutlinedButtons.outlinedButton01(
+              NumberDecimalOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "3");
                 },
                 buttonLabel: "3",
               ),
-              AppOutlinedButtons.outlinedButton02(
+              ArithmeticOperatorOutlinedButton(
                 onPressed: () {
                   inputArithmeticOperator(input: " + ");
                 },
@@ -334,32 +334,30 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SizedBox(width: 17.w),
-              AppOutlinedButtons.outlinedButton01(
+              NumberDecimalOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "0");
                 },
                 buttonLabel: "0",
               ),
-              AppOutlinedButtons.outlinedButton01(
+              NumberDecimalOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: ".");
                 },
                 buttonLabel: ".",
               ),
-              SizedBox(
-                height: 17.w,
-                width: 17.w,
-                child: ElevatedButton(
-                  onPressed: () {
-                    calculateInput();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                  ),
-                  child: Text(
-                    "=",
-                    style: TextStyle(fontSize: 21.sp),
-                  ),
+              ElevatedButton(
+                onPressed: () {
+                  calculateInput();
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(17.w, 17.w),
+                  maximumSize: Size(17.w, 17.w),
+                  shape: const CircleBorder(),
+                ),
+                child: Text(
+                  "=",
+                  style: TextStyle(fontSize: 21.sp),
                 ),
               ),
             ],
