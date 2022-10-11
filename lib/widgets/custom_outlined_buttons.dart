@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class NumberDecimalOutlinedButton extends StatelessWidget {
-  const NumberDecimalOutlinedButton({
+class NumberOrDecimalPointOutlinedButton extends StatelessWidget {
+  const NumberOrDecimalPointOutlinedButton({
     Key? key,
     required this.onPressed,
     required this.buttonLabel,

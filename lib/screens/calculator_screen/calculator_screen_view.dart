@@ -1,8 +1,8 @@
 import 'package:basiccalculator/widgets/custom_outlined_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:math_expressions/math_expressions.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 class CalculatorScreenView extends StatefulWidget {
   const CalculatorScreenView({Key? key}) : super(key: key);
@@ -243,19 +243,19 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              NumberDecimalOutlinedButton(
+              NumberOrDecimalPointOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "7");
                 },
                 buttonLabel: "7",
               ),
-              NumberDecimalOutlinedButton(
+              NumberOrDecimalPointOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "8");
                 },
                 buttonLabel: "8",
               ),
-              NumberDecimalOutlinedButton(
+              NumberOrDecimalPointOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "9");
                 },
@@ -273,19 +273,19 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              NumberDecimalOutlinedButton(
+              NumberOrDecimalPointOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "4");
                 },
                 buttonLabel: "4",
               ),
-              NumberDecimalOutlinedButton(
+              NumberOrDecimalPointOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "5");
                 },
                 buttonLabel: "5",
               ),
-              NumberDecimalOutlinedButton(
+              NumberOrDecimalPointOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "6");
                 },
@@ -303,19 +303,19 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              NumberDecimalOutlinedButton(
+              NumberOrDecimalPointOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "1");
                 },
                 buttonLabel: "1",
               ),
-              NumberDecimalOutlinedButton(
+              NumberOrDecimalPointOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "2");
                 },
                 buttonLabel: "2",
               ),
-              NumberDecimalOutlinedButton(
+              NumberOrDecimalPointOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "3");
                 },
@@ -334,13 +334,13 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SizedBox(width: 17.w),
-              NumberDecimalOutlinedButton(
+              NumberOrDecimalPointOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: "0");
                 },
                 buttonLabel: "0",
               ),
-              NumberDecimalOutlinedButton(
+              NumberOrDecimalPointOutlinedButton(
                 onPressed: () {
                   inputNumberOrDecimalPoint(input: ".");
                 },
@@ -362,7 +362,7 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
               ),
             ],
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 2.5.h),
         ],
       ),
     );
