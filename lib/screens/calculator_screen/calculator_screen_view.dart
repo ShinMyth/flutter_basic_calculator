@@ -16,14 +16,14 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
   String inputedValue = "";
   String calculatedValue = "";
 
-  allClear() {
+  void allClear() {
     setState(() {
       inputedValue = "";
       calculatedValue = "";
     });
   }
 
-  clear() {
+  void clear() {
     setState(() {
       if (calculatedValue.isNotEmpty) {
         calculatedValue = "";
@@ -40,7 +40,7 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
     });
   }
 
-  inputNumberOrDecimalPoint({required String input}) {
+  void inputNumberOrDecimalPoint({required String input}) {
     setState(() {
       if (calculatedValue.isNotEmpty) {
         // Checks if the previous calculated value is not 0
@@ -99,7 +99,7 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
     });
   }
 
-  inputArithmeticOperator({required String input}) {
+  void inputArithmeticOperator({required String input}) {
     setState(() {
       if (calculatedValue.isNotEmpty) {
         inputedValue = calculatedValue;
@@ -123,7 +123,7 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
     });
   }
 
-  calculateInput() {
+  void calculateInput() {
     setState(() {
       if (inputedValue.isNotEmpty) {
         // Check if the inputed value is a negative symbol only
@@ -184,10 +184,10 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
                     inputedValue,
                     textAlign: TextAlign.right,
                     style: TextStyle(
-                      fontSize: 23.sp,
+                      fontSize: inputedValue.length > 18 ? 22.80.sp : 24.75.sp,
                       color: Colors.black.withOpacity(0.7),
                     ),
-                    maxLines: 4,
+                    maxLines: inputedValue.length > 18 ? 3 : 1,
                   ),
                   SizedBox(height: 1.h),
                 ],
@@ -199,12 +199,12 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
                           : initialValue,
                   textAlign: TextAlign.right,
                   style: TextStyle(
-                    fontSize: 23.sp,
+                    fontSize: inputedValue.length > 15 ? 25.sp : 26.5.sp,
                     color: calculatedValue.isNotEmpty
                         ? Colors.blueAccent
                         : Colors.black.withOpacity(0.7),
                   ),
-                  maxLines: 5,
+                  maxLines: inputedValue.length > 15 ? 3 : 1,
                 ),
               ],
             ),
