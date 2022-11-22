@@ -184,10 +184,10 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
                     inputedValue,
                     textAlign: TextAlign.right,
                     style: TextStyle(
-                      fontSize: inputedValue.length > 18 ? 22.80.sp : 24.75.sp,
+                      fontSize: 24.5.sp,
                       color: Colors.black.withOpacity(0.7),
                     ),
-                    maxLines: inputedValue.length > 18 ? 3 : 1,
+                    maxLines: 3,
                   ),
                   SizedBox(height: 1.h),
                 ],
@@ -199,12 +199,12 @@ class _CalculatorScreenViewState extends State<CalculatorScreenView> {
                           : initialValue,
                   textAlign: TextAlign.right,
                   style: TextStyle(
-                    fontSize: inputedValue.length > 15 ? 25.sp : 26.5.sp,
+                    fontSize: 26.5.sp,
                     color: calculatedValue.isNotEmpty
                         ? Colors.blueAccent
                         : Colors.black.withOpacity(0.7),
                   ),
-                  maxLines: inputedValue.length > 15 ? 3 : 1,
+                  maxLines: 3,
                 ),
               ],
             ),
